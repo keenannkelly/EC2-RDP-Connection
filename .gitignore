@@ -1,0 +1,36 @@
+# Private Keys - NEVER COMMIT!
+*.pem
+*.ppk
+*.key
+*.rdp
+
+# AWS Credentials
+*.credentials
+.aws/
+credentials
+
+# Passwords and Secrets
+passwords.txt
+secrets.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE Files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Screenshots with sensitive info
+*password*.png
+*credential*.png
+
+# Temporary Files
+*.tmp
+*.temp
