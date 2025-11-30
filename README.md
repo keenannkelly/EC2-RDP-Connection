@@ -1,56 +1,46 @@
 # Connecting to AWS EC2 Windows Instance via RDP
 
-A step-by-step guide demonstrating secure Remote Desktop Protocol (RDP) connection to an AWS EC2 Windows Server instance using key pair authentication.
-
-## 🎯 Project Overview
+# 🎯 Project Overview
 
 This project documents the complete process of establishing a secure RDP connection to an AWS EC2 Windows instance, showcasing knowledge of AWS security practices, Windows Server administration, and remote access protocols.
 
-## 🎥 Watch Me Build This Lab
+# 🎥 Watch Me Build This Lab
 
 See the complete RDP connection process in action:
-
 [![Watch Me Build This Lab](https://cdn.loom.com/sessions/thumbnails/46b966a0feb347198e716365c2c33f90-with-play.gif)](https://www.loom.com/share/46b966a0feb347198e716365c2c33f90)
 
-**[▶️ Watch Me Build This Lab - Full Video Walkthrough](https://www.loom.com/share/46b966a0feb347198e716365c2c33f90)**
+**[▶️ Click here to watch the full video demonstration](https://www.loom.com/share/46b966a0feb347198e716365c2c33f90)**
 
-*This video demonstrates the complete EC2 RDP connection process from instance selection to successful remote desktop access.*
-
-## 🔐 Security Highlights
-
-- **Key Pair Authentication** - Secure password decryption using private key
-- **Encrypted Credentials** - AWS-encrypted administrator password
-- **Remote Access Protocol** - Industry-standard RDP connection
-- **Best Practices** - Proper key management and secure connection methods
-
-## 📋 Connection Process
+# 📋 Steps Performed
 
 ### Step 1: Select EC2 Instance
 - Navigated to AWS EC2 Console
 - Located target Windows Server instance
 - Selected instance for connection
 - Verified instance state: **Running**
+<img width="2290" height="552" alt="Instances(11) -" src="https://github.com/user-attachments/assets/90ef9378-459a-4fb9-ad74-8511255c005e" />
 
 ### Step 2: Access RDP Client Configuration
 - Clicked **"Connect"** button on instance details page
 - Selected **"RDP Client"** tab
 - Chose connection type: **"Connect using RDP Client"**
 - Downloaded **Remote Desktop file** (.rdp)
-
-**What this does:**
-- Pre-configures connection settings
-- Includes public IP/DNS automatically
-- Simplifies connection process
+<img width="1003" height="475" alt="Connect we" src="https://github.com/user-attachments/assets/e9064ab5-0884-47bc-9905-8fa07925599e" />
 
 ### Step 3: Retrieve Administrator Password
 - Clicked **"Get Password"** button
 - Prepared to decrypt Windows administrator credentials
 - Initiated password retrieval process
+<img width="278" height="132" alt="Password" src="https://github.com/user-attachments/assets/13deb8da-31ae-403e-9d75-693e497a31eb" />
 
 ### Step 4: Upload Private Key
 - Clicked **"Upload private key file"** or **"Browse"**
 - Selected the `.pem` key pair file created during instance launch
+<img width="152" height="114" alt="Certifica" src="https://github.com/user-attachments/assets/6f00631d-97e4-43fe-9f19-a9a1c8de77b5" />
+
 - Uploaded private key for password decryption
+<img width="1065" height="528" alt="bet Windows password wo" src="https://github.com/user-attachments/assets/e6c6dfa9-0b94-4ed1-8219-19a9e3c48a1a" />
+
 
 **Security Note:** The private key never leaves your local machine during this process.
 
@@ -58,6 +48,8 @@ See the complete RDP connection process in action:
 - AWS decrypted the administrator password using uploaded key
 - Password displayed in plaintext (temporarily)
 - Copied decrypted password to clipboard
+<img width="1637" height="661" alt="Pasted Graphic 9" src="https://github.com/user-attachments/assets/ee2809d7-8036-4a2d-9590-990622a16ed8" />
+<img width="352" height="72" alt="Password" src="https://github.com/user-attachments/assets/1d2636d7-eaaa-480c-856d-9a9566dd2ca3" />
 
 **Technical Process:**
 ```
@@ -69,175 +61,20 @@ Encrypted Password + Private Key → Decrypted Administrator Password
 - System prompted for credentials
 - Pasted decrypted administrator password
 - Username: **Administrator** (default Windows admin account)
+<img width="542" height="271" alt="Enter Your Credentials" src="https://github.com/user-attachments/assets/b7cf0b27-a448-4f79-84d5-2e7873ae1d17" />
 
 ### Step 7: Successful Connection
 - ✅ RDP connection established
 - ✅ Windows Server desktop displayed
 - ✅ Full remote access achieved
 - ✅ Ready for server configuration and management
+<img width="1309" height="1051" alt="Pasted Graphic 13" src="https://github.com/user-attachments/assets/4dd9d459-1103-4e60-a0ec-aa01323ac1c3" />
 
-## 🖥️ Connection Details
-
-### RDP Configuration
-```
-Protocol:          Remote Desktop Protocol (RDP)
-Port:              3389 (default)
-Username:          Administrator
-Authentication:    Password (decrypted via key pair)
-Connection File:   .rdp (pre-configured)
-```
-
-### Security Group Requirements
-```
-Type:              RDP
-Protocol:          TCP
-Port Range:        3389
-Source:            Your IP address (recommended)
-                   or 0.0.0.0/0 (less secure)
-```
-
-## 🔧 Technical Components
-
-### AWS Services Used
-- **Amazon EC2** - Virtual machine hosting
-- **AWS Key Management** - Secure password encryption/decryption
-- **Security Groups** - Network access control
-- **VPC** - Virtual private cloud networking
-
-### Client Requirements
-- **Remote Desktop Client** - Built-in on Windows, downloadable for Mac/Linux
-- **Private Key File** - `.pem` format from EC2 key pair
-- **Network Access** - Internet connection to AWS region
-
-## 💻 Platform-Specific RDP Clients
-
-### Windows
-```
-Built-in: Remote Desktop Connection (mstsc.exe)
-Location: Start Menu → "Remote Desktop Connection"
-```
-
-### macOS
-```
-Download: Microsoft Remote Desktop from Mac App Store
-Free application with full RDP support
-```
-
-### Linux
-```
-Options:
-- Remmina (recommended)
-- Vinagre
-- FreeRDP (command-line)
-
-Install: sudo apt-get install remmina
-```
-
-## 🔐 Security Best Practices
-
-### Key Management
-- ✅ Store private keys securely (encrypted storage)
-- ✅ Never share private key files
-- ✅ Use appropriate file permissions (chmod 400 on Linux/Mac)
-- ✅ Keep backup of key pair in secure location
-
-### Network Security
-- ✅ Restrict RDP access to specific IP addresses
-- ✅ Use VPN for additional security layer
-- ✅ Enable Network Level Authentication (NLA)
-- ✅ Consider AWS Systems Manager Session Manager as alternative
-
-### Password Security
-- ✅ Change default administrator password after first login
-- ✅ Use strong, complex passwords
-- ✅ Enable Windows Firewall
-- ✅ Keep Windows Server updated
-
-## 🚀 Alternative Connection Methods
-
-### AWS Systems Manager Session Manager
-```
-Advantages:
-- No open inbound ports required
-- No key pair management needed
-- Full audit trail in CloudTrail
-- Browser-based access
-
-Connection:
-AWS Console → Systems Manager → Session Manager → Start Session
-```
-
-### AWS Client VPN
-```
-Benefits:
-- Secure VPN tunnel to VPC
-- Private IP access
-- Enhanced security
-- Multi-instance access
-```
-
-### Bastion Host / Jump Server
-```
-Architecture:
-Your Computer → Bastion Host → Target EC2 Instance
-Provides additional security layer
-```
-
-## 📊 Troubleshooting Guide
-
-### Cannot Connect to Instance
-
-**Issue**: Connection timeout or refused
-
-**Solutions:**
-```
-1. Verify instance is running
-   - Check instance state in EC2 console
-
-2. Check Security Group rules
-   - Ensure port 3389 is open
-   - Verify source IP is allowed
-
-3. Verify Network ACLs
-   - Check VPC network ACL settings
-
-4. Confirm public IP/DNS
-   - Use correct connection endpoint
-```
-
-### Password Decryption Failed
-
-**Issue**: Cannot decrypt administrator password
-
-**Solutions:**
-```
-1. Verify correct key pair file
-   - Must match key pair used at launch
-
-2. Check instance age
-   - Password available 4-5 minutes after launch
-
-3. Ensure Windows is fully initialized
-   - Wait for instance status checks to pass
-```
-
-### RDP Client Issues
-
-**Issue**: RDP application errors
-
-**Solutions:**
-```
-1. Update RDP client to latest version
-2. Check local firewall settings
-3. Verify network connectivity
-4. Try alternative RDP client
-```
 
 ## 📈 Skills Demonstrated
 
 ### AWS Cloud Services
 - ✅ EC2 instance management
-- ✅ Security group configuration
 - ✅ Key pair authentication
 - ✅ AWS Console navigation
 - ✅ Password decryption process
@@ -246,128 +83,9 @@ Provides additional security layer
 - ✅ Remote Desktop Protocol (RDP)
 - ✅ Windows authentication
 - ✅ Remote server access
-- ✅ Administrator account management
-
-### Security Practices
-- ✅ Public key cryptography understanding
-- ✅ Secure credential management
-- ✅ Network security configuration
-- ✅ Access control implementation
-
-### Technical Documentation
-- ✅ Step-by-step process documentation
-- ✅ Troubleshooting guides
-- ✅ Security best practices
-- ✅ Professional presentation
-
-## 🎓 Learning Outcomes
-
-This project demonstrates:
-- **Cloud Infrastructure Access** - Secure remote connection methods
-- **AWS Security Model** - Key-based authentication
-- **Windows Server Management** - Remote administration capabilities
-- **Network Protocols** - RDP configuration and usage
-- **Problem Solving** - Troubleshooting connection issues
-
-## 📸 Visual Documentation
-
-### Recommended Screenshots
-1. **EC2 Console** - Instance selection and Connect button
-2. **RDP Client Tab** - Download RDP file option
-3. **Get Password** - Password decryption interface
-4. **Key Upload** - Private key file selection
-5. **Decrypted Password** - Password display (blur sensitive info)
-6. **RDP Client** - Connection dialog
-7. **Windows Desktop** - Successfully connected session
-
-## 🔄 Post-Connection Tasks
-
-### Initial Configuration
-```
-1. Change Administrator password
-2. Enable Windows Firewall
-3. Install Windows Updates
-4. Configure Windows Defender
-5. Set up user accounts (if needed)
-6. Install required software
-7. Configure backup strategy
-```
-
-### Server Hardening
-```
-1. Disable unnecessary services
-2. Configure audit policies
-3. Enable BitLocker (if applicable)
-4. Set up monitoring/logging
-5. Configure automatic updates
-```
-
-## 💰 Cost Considerations
-
-### RDP Connection Costs
-```
-RDP Connection:     FREE (no additional charge)
-Data Transfer:      Standard AWS data transfer rates
-Instance Hours:     Charged while instance is running
-Elastic IP:         Free while attached to running instance
-```
-
-### Cost Optimization
-- Stop instances when not in use
-- Use appropriate instance sizing
-- Monitor data transfer usage
-- Consider Reserved Instances for long-term use
-
-## 🛠️ Useful Commands
-
-### Windows PowerShell (from RDP session)
-```powershell
-# Check system information
-Get-ComputerInfo
-
-# View network configuration
-Get-NetIPConfiguration
-
-# Check Windows version
-systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
-
-# List installed software
-Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion
-
-# Check disk space
-Get-PSDrive -PSProvider FileSystem
-```
-
-### AWS CLI (from local machine)
-```bash
-# Get instance details
-aws ec2 describe-instances --instance-ids i-xxxxxxxxxxxxx
-
-# Get Windows password
-aws ec2 get-password-data --instance-id i-xxxxxxxxxxxxx --priv-launch-key /path/to/key.pem
-
-# Check security group rules
-aws ec2 describe-security-groups --group-ids sg-xxxxxxxxxxxxx
-```
-
-## 📚 Additional Resources
-
-- [AWS EC2 Windows Instances Documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/)
-- [Remote Desktop Protocol (RDP) Overview](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/)
-- [AWS Security Best Practices](https://aws.amazon.com/architecture/security-identity-compliance/)
-- [Windows Server Administration Guide](https://docs.microsoft.com/windows-server/)
 
 ## 👨‍💻 Author
 
 **Keenan Kelly**
 
 This project demonstrates practical AWS cloud infrastructure access and Windows Server remote administration capabilities.
-
-## 📄 Related Projects
-
-- [Creating a VM on AWS](https://github.com/keenannkelly/Creating-VM-on-AWS) - EC2 instance deployment
-- [AWS S3 Bash Lab](https://github.com/keenannkelly/aws-s3-bash-lab) - AWS automation scripting
-
----
-
-*Demonstrating secure remote access to AWS cloud infrastructure and Windows Server administration*
