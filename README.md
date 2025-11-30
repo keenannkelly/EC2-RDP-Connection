@@ -6,6 +6,16 @@ A step-by-step guide demonstrating secure Remote Desktop Protocol (RDP) connecti
 
 This project documents the complete process of establishing a secure RDP connection to an AWS EC2 Windows instance, showcasing knowledge of AWS security practices, Windows Server administration, and remote access protocols.
 
+## 🎥 Watch Me Build This Lab
+
+See the complete RDP connection process in action:
+
+[![Watch Me Build This Lab](https://cdn.loom.com/sessions/thumbnails/46b966a0feb347198e716365c2c33f90-with-play.gif)](https://www.loom.com/share/46b966a0feb347198e716365c2c33f90)
+
+**[▶️ Watch Me Build This Lab - Full Video Walkthrough](https://www.loom.com/share/46b966a0feb347198e716365c2c33f90)**
+
+*This video demonstrates the complete EC2 RDP connection process from instance selection to successful remote desktop access.*
+
 ## 🔐 Security Highlights
 
 - **Key Pair Authentication** - Secure password decryption using private key
